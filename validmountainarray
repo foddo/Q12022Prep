@@ -1,0 +1,30 @@
+Solution Of https://leetcode.com/problems/valid-mountain-array/
+
+class Solution {
+    public boolean validMountainArray(int[] arr) {
+        boolean increasing = false;
+        boolean decreasing = false;
+        int i = 0;
+        // Move all increasing positions.
+        for (; i < arr.length-1;i++) {
+            // Invalid array.
+            if (arr[i]==arr[i+1]) return false;
+            
+            // Point to slope downward.
+            if(arr[i+1] < arr[i]) break;
+        }
+        // Increasing or decreasing array only.
+        if (i==0 || i == arr.length-1) return false;
+        
+        // Move second part of decreasing array
+        for (; i < arr.length-1;i++) {
+            // Invalid array
+            if (arr[i+1] >= arr[i]) return false;
+        }
+
+        
+        return true;
+        
+        
+    }
+}
